@@ -1,0 +1,6 @@
+<div *ngIf="currentUser$ | async as user">
+  <h1>Welcome {{ user.email }}</h1>
+</div>
+<div>
+  <app-product></app-product>
+</div>
