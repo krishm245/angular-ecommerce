@@ -8,5 +8,5 @@ export const environment = {
     messagingSenderId: '549862172015',
     appId: '1:549862172015:web:7af46f4da6d4a3e15cf49a',
   },
-  apiEndpoint: 'https://fakestoreapi.com/products/',
+  apiEndpoint: 'https://fakestoreapi.com/',
 };

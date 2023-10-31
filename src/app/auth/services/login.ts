@@ -10,6 +10,14 @@ import { Observable, from, of } from 'rxjs';
 export class LoginService {
   constructor(private auth: AngularFireAuth) {}
 
+  logoutUser() {
+    try {
+      this.auth.signOut();
+    } catch (error) {
+      console.log('Error signing out');
+    }
+  }
+
   loginUser({
     email,
     password,
@@ -22,6 +30,7 @@ export class LoginService {
         );
       })
     );
+
     // try {
     //   const userCredentials = await this.auth.signInWithEmailAndPassword(
     //     email as string,

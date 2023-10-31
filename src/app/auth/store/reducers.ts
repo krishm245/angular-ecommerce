@@ -1,8 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
 import {
-  GetLoggedInUser,
-  GetLoggedInUserFailure,
-  GetLoggedInUserSuccess,
   UserLoginAttempt,
   UserLoginFailure,
   UserLoginSuccess,
@@ -28,17 +25,6 @@ export const userReducers = createReducer(
   on(UserLoginFailure, (state, action) => ({
     ...state,
     isSubmitted: false,
-    error: action.error,
-  })),
-  on(GetLoggedInUser, (state) => ({ ...state, isFetchingUser: true })),
-  on(GetLoggedInUserSuccess, (state, action) => ({
-    ...state,
-    isFetchingUser: false,
-    currentUser: action.loggedInUser,
-  })),
-  on(GetLoggedInUserFailure, (state, action) => ({
-    ...state,
-    isFetchingUser: false,
     error: action.error,
   }))
 );

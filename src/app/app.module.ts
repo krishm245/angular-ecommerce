@@ -18,9 +18,24 @@ import { UserEffects } from './auth/store/effects';
 
 import { ProductComponent } from './product/product.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NavbarComponent } from './shared/navbar/navbar.component';
+import { ProductEffect } from './product/store/effects';
+import { CartComponent } from './cart/cart.component';
+import { OrderComponent } from './order/order.component';
+import { OrderEffects } from './order/store/effects';
+import * as firebase from 'firebase/app';
+import 'firebase/firestore';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, LoginComponent, ProductComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    LoginComponent,
+    ProductComponent,
+    NavbarComponent,
+    CartComponent,
+    OrderComponent,
+  ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
@@ -30,7 +45,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     ReactiveFormsModule,
     StoreModule.forRoot(appReducers),
-    EffectsModule.forRoot(UserEffects),
+    EffectsModule.forRoot(UserEffects, ProductEffect, OrderEffects),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: !isDevMode(), // Restrict extension to log-only mode
@@ -43,4 +58,8 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor() {
+    firebase.initializeApp(environment.firebase);
+  }
+}

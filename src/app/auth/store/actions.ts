@@ -14,13 +14,3 @@ export const UserLoginFailure = createAction(
   '[Auth Login] User Login Failure',
   props<{ error: string | null }>()
 );
-
-export const GetLoggedInUser = createAction('[Auth User] Get Logged In User');
-export const GetLoggedInUserSuccess = createAction(
-  '[Auth User] Get Logged In User Success',
-  props<{ loggedInUser: firebase.default.User | null }>()
-);
-export const GetLoggedInUserFailure = createAction(
-  '[Auth User] Get Logged In User Failure',
-  props<{ error: string | null }>()
-);

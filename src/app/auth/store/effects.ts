@@ -2,7 +2,6 @@ import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { LoginService } from '../services/login';
 import {
-  GetLoggedInUser,
   UserLoginAttempt,
   UserLoginFailure,
   UserLoginSuccess,
